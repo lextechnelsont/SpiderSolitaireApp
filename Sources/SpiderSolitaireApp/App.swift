@@ -240,15 +240,13 @@ struct SettingsView: View {
                 Toggle("Sound", isOn: $viewModel.soundOn)
 
                 Picker("Card Style", selection: $viewModel.selectedCardStyle) {
-                    ForEach(CardStyle.allCases, id: \.
-.rawValue) { style in
+                    ForEach(CardStyle.allCases, id: \.self) { style in
                         Text(style.rawValue.capitalized)
                     }
                 }
 
                 Picker("Background", selection: $viewModel.selectedBackground) {
-                    ForEach(BackgroundStyle.allCases, id: \.
-.rawValue) { bg in
+                    ForEach(BackgroundStyle.allCases, id: \.self) { bg in
                         Text(bg.rawValue.capitalized)
                     }
                 }
@@ -277,8 +275,7 @@ struct GameBoardView: View {
             // Tableau Columns
             ScrollView(.horizontal) {
                 HStack(alignment: .bottom, spacing: 8) {
-                    ForEach(0..<10, id: \.
-self) { index in
+                    ForEach(0..<10, id: \.self) { index in
                         TableauColumnView(cards: viewModel.gameEngine.tableau[index], columnIndex: index, viewModel: viewModel)
                     }
                 }
@@ -291,8 +288,7 @@ self) { index in
                     viewModel.gameEngine.dealCards()
                 }
 
-                ForEach(0..<8, id: \.
-self) { idx in
+                ForEach(0..<8, id: \.self) { idx in
                     FoundationPileView(cards: viewModel.gameEngine.foundations[idx])
                 }
             }
